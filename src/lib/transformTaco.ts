@@ -1,13 +1,13 @@
-// import types
-import { RawTaco } from "@/types/rawTacos";
-import { ComponentResponse, TacoResponse } from "@/types/responses";
-
 // import data
 import rawBases from "@/data/base_layers.json" assert { type: "JSON" };
 import rawCondiments from "@/data/condiments.json" assert { type: "JSON" };
 import rawMixins from "@/data/mixins.json" assert { type: "JSON" };
 import rawSeasonings from "@/data/seasonings.json" assert { type: "JSON" };
 import rawShells from "@/data/shells.json" assert { type: "JSON" };
+
+// import types
+import { RawTaco } from "@/types/rawTacos";
+import { ComponentResponse, TacoResponse } from "@/types/responses";
 
 import markdownToTxt from "markdown-to-txt";
 
@@ -29,7 +29,10 @@ function expandComponent(
 }
 
 export function transformTaco(rawTaco: RawTaco): TacoResponse {
-  let shell = rawShells.filter((s: any) => s.slug === rawTaco.shell_slug)[0];
+  let shell: ComponentResponse | null = rawShells.filter(
+    (s: any) => s.slug === rawTaco.shell_slug
+  )[0] as ComponentResponse;
+  shell.recipe_text = markdownToTxt(shell.recipe);
 
   const bases = expandComponent(rawBases, rawTaco.base_slugs);
   const condiments = expandComponent(rawCondiments, rawTaco.condiment_slugs);

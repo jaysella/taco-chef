@@ -1,6 +1,7 @@
 import rawSeasonings from "@/data/seasonings.json" assert { type: "JSON" };
 import { filterByTag } from "@/lib/filterByTag";
 import { ComponentResponse } from "@/types/responses";
+import markdownToTxt from "markdown-to-txt";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(
@@ -9,11 +10,17 @@ export default function handler(
 ) {
   const { vegetarian, vegan } = req.query;
 
-  const seasonings: ComponentResponse[] = filterByTag(
+  let seasonings: ComponentResponse[] = filterByTag(
     rawSeasonings,
     vegetarian === "true",
     vegan === "true"
-  );
+  ) as ComponentResponse[];
+
+  for (const seasoning in seasonings) {
+    seasonings[seasoning].recipe_text = markdownToTxt(
+      seasonings[seasoning].recipe
+    );
+  }
 
   // return response
   res.status(200).json(seasonings);
