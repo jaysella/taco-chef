@@ -2,6 +2,7 @@ export type ComponentResponse = {
   url: string;
   name: string;
   recipe: string;
+  recipe_text: string;
   slug: string;
   tags: string[];
 };
@@ -19,6 +20,7 @@ export type TacoResponse = {
   url: string;
   name: string;
   recipe: string;
+  recipe_text: string;
   slug: string;
   bases: ComponentResponse[];
   condiments: ComponentResponse[];
