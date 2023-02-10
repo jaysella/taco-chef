@@ -40,5 +40,6 @@ export function transformTaco(rawTaco: RawTaco): TacoResponse {
     mixins,
     seasonings,
     shell: shell || null,
+    tags: rawTaco.tags,
   };
 }

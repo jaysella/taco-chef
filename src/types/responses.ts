@@ -16,6 +16,7 @@ export type TacoResponse = {
   mixins: ComponentResponse[];
   seasonings: ComponentResponse[];
   shell: ComponentResponse | null;
+  tags: string[];
 };
 
 export type ErrorResponse = {
