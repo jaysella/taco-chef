@@ -1,4 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Taco Chef for Oasis Hack Session 3, Spring 2023
+
+Sample app built with Next.js to provide API endpoints for teaching React and API integration skills at Oasis. See the related repository [here](https://github.com/jaysella/tacos-oasis-hs3-sp23).
+
+## Demo
+
+The API is available at [here](https://tacos.girocibo.com/api/tacos). See the [API Endpoints](#api-endpoints) section below.
+
+## API Endpoints
+
+### GET `/tacos`
+
+**Response Type**: `TacoResponse[]`
+
+Returns a JSON array of pre-defined taco combinations. Optional `vegan` and `vegetarian` query parameters can be applied to filter the response.
+
+### GET `/tacos/generate`
+
+**Response Type**: `GeneratedTacoResponse`
+
+Returns a randomly generated taco.
+
+### GET `/tacos/:slug`
+
+**Response Type**: `TacoResponse | ErrorResponse`
+
+Looks up a pre-defined taco by its `slug` and returns the requested taco. If the specified taco does not exist, an error is returned.
+
+### GET `/seasonings`
+
+**Response Type**: `ComponentResponse[]`
+
+Returns a JSON array of all available seasonings. Optional `vegan` and `vegetarian` query parameters can be applied to filter the response.
+
+## Response Types
+
+### ComponentResponse
+
+```ts
+{
+  url: string;
+  name: string;
+  recipe: string;
+  recipe_text: string;
+  slug: string;
+  tags: string[];
+}
+```
+
+### TacoResponse
+
+```ts
+{
+  url: string;
+  name: string;
+  recipe: string;
+  recipe_text: string;
+  slug: string;
+  bases: ComponentResponse[];
+  condiments: ComponentResponse[];
+  mixins: ComponentResponse[];
+  seasonings: ComponentResponse[];
+  shell: ComponentResponse | null;
+  tags: string[];
+}
+```
+
+### GeneratedTacoResponse
+
+```ts
+{
+  generated_at: Date;
+  bases: ComponentResponse[];
+  condiments: ComponentResponse[];
+  mixins: ComponentResponse[];
+  seasonings: ComponentResponse[];
+  shell: ComponentResponse;
+}
+```
+
+---
 
 ## Getting Started
 
@@ -30,9 +110,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
