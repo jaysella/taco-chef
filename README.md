@@ -10,34 +10,34 @@ The API is available at [here](https://tacos.girocibo.com/api/tacos). See the [A
 
 ### GET `/tacos`
 
-**Response Type**: `TacoResponse[]`
-
-Returns a JSON array of pre-defined taco combinations. Optional `vegan` and `vegetarian` query parameters can be applied to filter the response.
+> **Response Type**: `TacoResponse[]`
+> 
+> Returns a JSON array of pre-defined taco combinations. Optional `vegan` and `vegetarian` query parameters can be applied to filter the response.
 
 ### GET `/tacos/generate`
 
-**Response Type**: `GeneratedTacoResponse`
-
-Returns a randomly generated taco.
+> **Response Type**: `GeneratedTacoResponse`
+> 
+> Returns a randomly generated taco.
 
 ### GET `/tacos/:slug`
 
-**Response Type**: `TacoResponse | ErrorResponse`
-
-Looks up a pre-defined taco by its `slug` and returns the requested taco. If the specified taco does not exist, an error is returned.
+> **Response Type**: `TacoResponse | ErrorResponse`
+> 
+> Looks up a pre-defined taco by its `slug` and returns the requested taco. If the specified taco does not exist, an error is returned.
 
 ### GET `/seasonings`
 
-**Response Type**: `ComponentResponse[]`
-
-Returns a JSON array of all available seasonings. Optional `vegan` and `vegetarian` query parameters can be applied to filter the response.
+> **Response Type**: `ComponentResponse[]`
+> 
+> Returns a JSON array of all available seasonings. Optional `vegan` and `vegetarian` query parameters can be applied to filter the response.
 
 ## Response Types
 
 ### ComponentResponse
 
 ```ts
-{
+type ComponentResponse = {
   url: string;
   name: string;
   recipe: string;
@@ -50,7 +50,7 @@ Returns a JSON array of all available seasonings. Optional `vegan` and `vegetari
 ### TacoResponse
 
 ```ts
-{
+type TacoResponse = {
   url: string;
   name: string;
   recipe: string;
@@ -68,7 +68,7 @@ Returns a JSON array of all available seasonings. Optional `vegan` and `vegetari
 ### GeneratedTacoResponse
 
 ```ts
-{
+type GeneratedTacoResponse = {
   generated_at: Date;
   bases: ComponentResponse[];
   condiments: ComponentResponse[];
