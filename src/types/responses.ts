@@ -6,6 +6,15 @@ export type ComponentResponse = {
   tags: string[];
 };
 
+export type GeneratedTacoResponse = {
+  generated_at: Date;
+  bases: ComponentResponse[];
+  condiments: ComponentResponse[];
+  mixins: ComponentResponse[];
+  seasonings: ComponentResponse[];
+  shell: ComponentResponse;
+};
+
 export type TacoResponse = {
   url: string;
   name: string;

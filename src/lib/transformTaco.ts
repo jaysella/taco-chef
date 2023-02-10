@@ -5,7 +5,7 @@ import { RawTaco } from "@/types/rawTacos";
 // import data
 import rawBases from "@/data/base_layers.json" assert { type: "JSON" };
 import rawCondiments from "@/data/condiments.json" assert { type: "JSON" };
-import rawMixins from "@/data/condiments.json" assert { type: "JSON" };
+import rawMixins from "@/data/mixins.json" assert { type: "JSON" };
 import rawSeasonings from "@/data/seasonings.json" assert { type: "JSON" };
 import rawShells from "@/data/shells.json" assert { type: "JSON" };
 

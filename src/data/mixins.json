@@ -113,7 +113,7 @@
   },
   {
     "name": "Cheese (Traditional; US)",
-    "slug": "cheese_(traditional;_us)",
+    "slug": "cheese_traditional_us)",
     "url": "https://github.com/dansinker/tacofancy/blob/master/mixins/cheese_traditional_us.md",
     "recipe": "A major flavor component of a traditional American taco, select a cheese that's firm and sharp.\n\n* Cheddar (shredded)\n* Jack/Pepper Jack (shredded)",
     "tags": ["vegetarian"]
