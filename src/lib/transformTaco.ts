@@ -29,10 +29,17 @@ function expandComponent(
 }
 
 export function transformTaco(rawTaco: RawTaco): TacoResponse {
-  let shell: ComponentResponse | null = rawShells.filter(
-    (s: any) => s.slug === rawTaco.shell_slug
-  )[0] as ComponentResponse;
-  shell.recipe_text = markdownToTxt(shell.recipe);
+  let shell: ComponentResponse | null = null;
+
+  if (rawTaco.shell_slug) {
+    shell = rawShells.filter(
+      (s: any) => s.slug === rawTaco.shell_slug
+    )[0] as ComponentResponse;
+
+    if (shell) {
+      shell.recipe_text = markdownToTxt(shell.recipe);
+    }
+  }
 
   const bases = expandComponent(rawBases, rawTaco.base_slugs);
   const condiments = expandComponent(rawCondiments, rawTaco.condiment_slugs);

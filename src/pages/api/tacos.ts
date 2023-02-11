@@ -19,7 +19,7 @@ export default function handler(
   );
 
   // iterate through each taco
-  for (const taco in rawTacos) {
+  for (const taco in filteredTacos) {
     tacos.push(transformTaco(filteredTacos[taco]));
   }
 
